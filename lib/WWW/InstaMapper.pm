@@ -1,5 +1,37 @@
 package WWW::InstaMapper;
 
+=head1 NAME
+
+WWW::InstaMapper - Perl interface to the InstaMapper.com API
+
+=head1 SYNOPSIS
+
+  use WWW::InstaMapper;
+
+  my $instamapper = WWW::InstaMapper->new(
+      api_key => '1234567890',
+      ssl     => 1,
+  );
+
+  my $position = $instamapper->get_last_position;
+  print "Last position logged at $position->{timestamp}";
+
+  my @positions = $instamapper->get_positions(
+      num            => 500,
+      from_timestamp => '2009-01-01',
+  );
+
+  for my $position (@positions)
+  {
+    print "$position->{device_label} was at lat " .
+          "$position->{latitude}/long $position->{longitude} " .
+          "at $position->{timestamp}";
+  }
+
+=head1 DESCRIPTION
+
+This module provides an object-oriented Perl interface to the InstaMapper.com API.
+
 use strict;
 use warnings;
 use Carp;
@@ -10,7 +42,9 @@ use LWP::UserAgent;
 
 our $VERSION = '0.01';
 
-=item new
+=head1 METHODS
+
+=head2 new
 
 Returns a new instance of WWW::InstaMapper.
 
@@ -66,7 +100,7 @@ sub get_positions
     $self->_api_call('getPositions', @_);
 }
 
-=head2 $self->get_last_position
+=head2 get_last_position
 
 Returns a hash reference containing data on the last position logged for the
 devices whose API keys are associated with this object.
@@ -163,40 +197,6 @@ sub _enforce_terms
     sleep $requirement - $difference;
 }
 
-1;
-
-=head1 NAME
-
-WWW::InstaMapper - Perl interface to the InstaMapper.com API
-
-=head1 SYNOPSIS
-
-  use WWW::InstaMapper;
-
-  my $instamapper = WWW::InstaMapper->new(
-      api_key => '1234567890',
-      ssl     => 1,
-  );
-
-  my $position = $instamapper->get_last_position;
-  print "Last position logged at $position->{timestamp}";
-
-  my @positions = $instamapper->get_positions(
-      num            => 500,
-      from_timestamp => '2009-01-01',
-  );
-
-  for my $position (@positions)
-  {
-    print "$position->{device_label} was at lat " .
-          "$position->{latitude}/long $position->{longitude} " .
-          "at $position->{timestamp}";
-  }
-
-=head1 DESCRIPTION
-
-This module provides an object-oriented Perl interface to the InstaMapper.com API.
-
 =head1 DEPENDENCIES
 
 DateTime, Date::Parse, LWP::UserAgent, JSON
@@ -219,3 +219,6 @@ itself.
 Michael Aquilina, aquilina@cpan.org
 
 =cut
+
+1;
+
