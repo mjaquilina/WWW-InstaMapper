@@ -1,5 +1,15 @@
 package WWW::InstaMapper;
 
+use strict;
+use warnings;
+use Carp;
+use DateTime;
+use Date::Parse qw(str2time);
+use JSON;
+use LWP::UserAgent;
+
+our $VERSION = '0.01';
+
 =head1 NAME
 
 WWW::InstaMapper - Perl interface to the InstaMapper.com API
@@ -31,16 +41,6 @@ WWW::InstaMapper - Perl interface to the InstaMapper.com API
 =head1 DESCRIPTION
 
 This module provides an object-oriented Perl interface to the InstaMapper.com API.
-
-use strict;
-use warnings;
-use Carp;
-use DateTime;
-use Date::Parse qw(str2time);
-use JSON;
-use LWP::UserAgent;
-
-our $VERSION = '0.01';
 
 =head1 METHODS
 
