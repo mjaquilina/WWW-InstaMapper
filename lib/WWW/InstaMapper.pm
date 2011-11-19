@@ -8,11 +8,11 @@ use Date::Parse qw(str2time);
 use JSON;
 use LWP::UserAgent;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 NAME
 
-WWW::InstaMapper - Perl interface to the InstaMapper.com API
+WWW::InstaMapper - Interface to the InstaMapper.com API
 
 =head1 SYNOPSIS
 
@@ -50,10 +50,17 @@ Returns a new instance of WWW::InstaMapper.
 
 Accepts a hash, containing the following parameters:
 
-api_key (required): The InstaMapper API key (as a string) or multiple keys (as
-an array reference of strings) that you would like to retrieve positions for.
+=over 4
 
-ssl (optional): Boolean indication of whether or not to make API calls via HTTPS.
+=item * B<api_key> (required)
+
+The InstaMapper API key (as a string) or multiple keys (as an array reference of strings) that you would like to retrieve positions for.
+
+=item * B<ssl> (optional)
+
+Boolean indication of whether or not to make API calls via HTTPS.
+
+=back
 
 Please note that in accordance with the InstaMapper API terms, a delay of 10
 seconds (or 30 seconds if using SSL) will be enforced between requests via this
@@ -77,20 +84,55 @@ whose API keys are associated with this object.
 
 Accepts the following optional parameters:
 
-num - The number of positions to return (maximum of 1000)
-from_timestamp - Timestamp of the earliest time you would like positions from
-from_unixtime - Epoch timestamp (UTC) of the earliest time you would like positions from
+=over 4
+
+=item * B<num>
+
+The number of positions to return (maximum of 1000)
+
+=item * B<from_timestamp>
+
+Timestamp of the earliest time you would like positions from
+
+=item * B<from_unixtime>
+
+Epoch timestamp (UTC) of the earliest time you would like positions from
+
+=back
 
 The hash references contain the following data:
 
-device_key:   InstaMapper device key
-device_label: InstaMapper device label
-timestamp:    DateTime object representing the time the position was logged, in UTC
-latitude:     Latitude
-longitude:    Longitude
-altitude:     Altitude (in meters)
-speed:        Speed (in meters/second)
-heading:      Heading (in degrees)
+=over 4
+
+=item * B<device_key>
+
+InstaMapper device key
+
+=item * B<device_label>
+
+InstaMapper device label
+
+=item * B<timestamp>
+
+DateTime object representing the time the position was logged, in UTC
+
+=item * B<latitude>
+
+=item * B<longitude>
+
+=item * B<altitude>
+
+Altitude (in meters)
+
+=item * B<speed>
+
+Speed (in meters/second)
+
+=item * B<heading>
+
+Heading (in degrees)
+
+=back
 
 =cut
 
@@ -209,7 +251,7 @@ Users of this module must be sure to follow the InstaMapper.com API terms of ser
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2008 Michael Aquilina. All rights reserved.
+Copyright (C) 2011 Michael Aquilina. All rights reserved.
 
 This code is free software; you can redistribute it and/or modify it under the same terms as Perl
 itself.

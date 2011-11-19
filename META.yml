@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               WWW-InstaMapper
-version:            0.01
+version:            0.02
 abstract:           Perl interface to the InstaMapper.com API
 author:
     - Michael Aquilina <aquilina@cpan.org>
@@ -24,3 +24,4 @@ generated_by:       ExtUtils::MakeMaker version 6.52
 meta-spec:
     url:      http://module-build.sourceforge.net/META-spec-v1.4.html
     version:  1.4
+

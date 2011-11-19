@@ -1,4 +1,8 @@
 Revision history for Perl extension WWW::InstaMapper.
 
-0.01  Fri Jan 11 21:26:21 2008
+0.02  Fri Nov 18 2011
+    - minor tweaks to the POD
+
+0.01  Fri Jan 11 2008
     - original version
+
